@@ -1,6 +1,6 @@
 # react-powerful-data-table
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/albertopumar/react-powerful-data-table/blob/master/LICENSE) [![npm version](https://img.shields.io/badge/npm-v0.0.1-blue)](https://www.npmjs.com/package/react)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/albertopumar/react-powerful-data-table/blob/master/LICENSE) [![npm version](https://img.shields.io/badge/npm-v0.0.1-blue)](https://www.npmjs.com/package/react-powerful-data-table)
 
 # Description
 
