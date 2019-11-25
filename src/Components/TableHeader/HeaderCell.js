@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import FilterInput from './Filter';
-import ComponentsContext from '../Utils/ComponentsContext';
+import ComponentsContext from '../../Utils/ComponentsContext';
 
 const StyledSearchWrapper = styled.div`
     position: relative;
@@ -19,6 +19,8 @@ const HeaderCell = props => {
     const { SearchWrapper = StyledSearchWrapper, HeaderCellWrapper = StyledHeaderCellWrapper } = useContext(
         ComponentsContext
     );
+
+    //TODO: extract order component
     return (
         <HeaderCellWrapper className="header-cell">
             <span onClick={() => handleOrderChange({ order: 'asc', field: columnStructure.field })}>

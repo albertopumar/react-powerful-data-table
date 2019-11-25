@@ -2,8 +2,9 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import HeaderCell from './HeaderCell';
-import ComponentsContext from '../Utils/ComponentsContext';
+import ComponentsContext from '../../Utils/ComponentsContext';
 
+//TODO: review responsive styles
 const StyledHeaderWrapper = styled.div`
     display: flex;
     min-height: 40px;
@@ -21,7 +22,6 @@ const StyledHeaderWrapper = styled.div`
 `;
 
 const TableHeader = props => {
-    //TODO: Set thorttling
     //TODO: Handle order state
 
     const { tableStructure, handleFilterChange, handleOrderChange } = props;

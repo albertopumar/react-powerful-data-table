@@ -33,6 +33,7 @@ const Pagination = ({ paging, handlePageChange }) => {
     const isPageStarting = paging.currentPage > 3;
     const isPageEnding = paging.currentPage < pageNumber - 4;
 
+    //TODO: refactor for legibility
     const pages = [...Array(pageNumber).keys()].slice(
         isPageStarting ? (!isPageEnding && pageNumber > 7 ? pageNumber - 5 : paging.currentPage - 1) : 0,
         isPageEnding ? (!isPageStarting && pageNumber > 7 ? 5 : paging.currentPage + 2) : pageNumber
