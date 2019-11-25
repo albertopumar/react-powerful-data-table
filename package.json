@@ -10,7 +10,6 @@
         "publish:npm": "rm -rf dist && mkdir dist &&  babel ./src -d dist --copy-files"
     },
     "dependencies": {
-        "@babel/plugin-proposal-class-properties": "^7.7.4",
         "lodash": "^4.17.15",
         "prop-types": "^15.7.2",
         "styled-components": "^4.4.1"
@@ -18,7 +17,8 @@
     "devDependencies": {
         "@babel/cli": "^7.7.4",
         "@babel/core": "^7.7.4",
-        "@babel/preset-react": "^7.7.4"
+        "@babel/preset-react": "^7.7.4",
+        "@babel/plugin-proposal-class-properties": "^7.7.4"
     },
     "eslintConfig": {
         "extends": "react-app"
