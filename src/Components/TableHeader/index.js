@@ -7,7 +7,7 @@ import ComponentsContext from '../../Utils/ComponentsContext';
 const TableHeader = props => {
     //TODO: Handle order state
 
-    const { tableStructure, handleFilterChange, handleOrderChange } = props;
+    const { tableStructure, handleFilterChange, handleOrderChange, order } = props;
 
     // Extract custom attributes from context
     const { HeaderWrapper = StyledHeaderWrapper } = useContext(ComponentsContext);
@@ -20,6 +20,7 @@ const TableHeader = props => {
                     columnStructure={columnStructure}
                     handleFilterChange={handleFilterChange}
                     handleOrderChange={handleOrderChange}
+                    order={order.field === columnStructure.field && order}
                 />
             ))}
         </HeaderWrapper>

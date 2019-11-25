@@ -25,6 +25,7 @@ class PowerfulDataTable extends React.Component {
                 totalCount: props.tableData.length
             },
             filter: [],
+            order: { field: '', order: '' },
             tableData: [],
             pagedData: [],
             tableStructure
@@ -75,18 +76,18 @@ class PowerfulDataTable extends React.Component {
     handleOrderChange = newOrder => {
         const tableData = this.defaultOrderFunction(newOrder, this.state.tableData);
 
-        this.setState({ tableData }, () => this.handlePageChange(0));
+        this.setState({ tableData, order: newOrder }, () => this.handlePageChange(0));
     };
 
     //TODO: better order function
     defaultOrderFunction = (filterObject, data) => {
-        return filterObject.order === 'asc'
+        return filterObject.direction === 'asc'
             ? data.sort((a, b) => a[filterObject.field].toString().localeCompare(b[filterObject.field].toString()))
             : data.reverse((a, b) => a[filterObject.field].toString().localeCompare(b[filterObject.field].toString()));
     };
 
     render() {
-        const { pagedData, paging } = this.state;
+        const { pagedData, paging, order } = this.state;
         const { components, tableStructure } = this.props;
 
         return (
@@ -96,6 +97,7 @@ class PowerfulDataTable extends React.Component {
                         tableStructure={tableStructure}
                         handleFilterChange={this.handleFilterChange}
                         handleOrderChange={this.handleOrderChange}
+                        order={order}
                     />
                     <TableContent tableStructure={tableStructure} tableData={pagedData} />
                     <Pagination paging={paging} handlePageChange={this.handlePageChange} />
