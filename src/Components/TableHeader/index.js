@@ -33,6 +33,7 @@ const TableHeader = props => {
         <HeaderWrapper>
             {tableStructure.map(columnStructure => (
                 <HeaderCell
+                    key={`header-key-${columnStructure.field}`}
                     columnStructure={columnStructure}
                     handleFilterChange={handleFilterChange}
                     handleOrderChange={handleOrderChange}

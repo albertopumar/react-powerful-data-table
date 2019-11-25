@@ -61,7 +61,11 @@ const Pagination = ({ paging, handlePageChange }) => {
             )}
 
             {pages.map(page => (
-                <PageButton selected={paging.currentPage === page} onClick={() => handlePageChange(page)}>
+                <PageButton
+                    key={`page-key-${page}`}
+                    selected={paging.currentPage === page}
+                    onClick={() => handlePageChange(page)}
+                >
                     {page + 1}
                 </PageButton>
             ))}

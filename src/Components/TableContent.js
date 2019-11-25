@@ -9,6 +9,8 @@ const ContentWrapper = styled.div`
 
 const TableContent = props => {
     const { tableStructure, tableData } = props;
+
+    // TODO: find representative key
     return (
         <ContentWrapper>
             {tableData.map(rowData => (

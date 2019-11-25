@@ -21,6 +21,7 @@ const TableRow = props => {
 
     const Row = context && context.TableRow ? context.TableRow : StyledRow;
 
+    // TODO: find representative key
     return (
         <Row>
             {tableStructure.map(columnStructure => (
