@@ -1,7 +1,8 @@
-import React from 'react';
-import styled from 'styled-component';
+import React, { useContext } from 'react';
+import styled from 'styled-components';
 
 import FilterInput from './Filter';
+import ComponentsContext from '../Utils/ComponentsContext';
 
 const StyledSearchWrapper = styled.div`
     position: relative;

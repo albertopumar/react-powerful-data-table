@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+
 import HeaderCell from './HeaderCell';
+import ComponentsContext from '../Utils/ComponentsContext';
 
 const StyledHeaderWrapper = styled.div`
     display: flex;
