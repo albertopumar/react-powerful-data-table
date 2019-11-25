@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import HeaderCell from './HeaderCell';
 
-import FilterInput from './Filter';
-
-const Header = styled.div`
+const StyledHeaderWrapper = styled.div`
     display: flex;
     min-height: 40px;
     border-top-left-radius: 8px;
@@ -19,31 +18,25 @@ const Header = styled.div`
     }
 `;
 
-const SearchWrapper = styled.div`
-    position: relative;
-    width: 100%;
-    padding: 0 50px;
-    box-sizing: border-box;
-`;
-
 const TableHeader = props => {
     //TODO: Set thorttling
     //TODO: Handle order state
 
     const { tableStructure, handleFilterChange, handleOrderChange } = props;
+
+    // Extract custom attributes from context
+    const { HeaderWrapper = StyledHeaderWrapper } = useContext(ComponentsContext);
+
     return (
-        <Header>
+        <HeaderWrapper>
             {tableStructure.map(columnStructure => (
-                <div className="header-cell">
-                    <span onClick={() => handleOrderChange({ order: 'asc', field: columnStructure.field })}>
-                        {columnStructure.title}
-                    </span>
-                    <SearchWrapper>
-                        <FilterInput columnStructure={columnStructure} handleFilterChange={handleFilterChange} />
-                    </SearchWrapper>
-                </div>
+                <HeaderCell
+                    columnStructure={columnStructure}
+                    handleFilterChange={handleFilterChange}
+                    handleOrderChange={handleOrderChange}
+                />
             ))}
-        </Header>
+        </HeaderWrapper>
     );
 };
 

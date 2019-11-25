@@ -15,16 +15,15 @@ const ClearIcon = styled.span`
 `;
 
 const FilterInput = props => {
-    const clearIconRef = React.createRef();
+    const searchInputRef = React.createRef();
 
     const handleClearClick = () => {
-        clearIconRef.current.value = '';
-        handleFilterChange('');
+        searchInputRef.current.value = '';
+        _handleFilterChange('');
     };
 
-    const handleFilterChange = data => {
+    const _handleFilterChange = data => {
         const { columnStructure, handleFilterChange } = props;
-
         handleFilterChange({ data, field: columnStructure.field });
     };
 
@@ -34,7 +33,7 @@ const FilterInput = props => {
                 type="text"
                 placeholder="Search"
                 onChange={({ target: { value } }) => handleFilterChange(value)}
-                ref={clearIconRef}
+                ref={searchInputRef}
             />
             <ClearIcon onClick={handleClearClick}>X</ClearIcon>
         </React.Fragment>
