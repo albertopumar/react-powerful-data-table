@@ -16,6 +16,7 @@ const StyledHeaderCellWrapper = styled.div``;
 const HeaderCell = props => {
     const { columnStructure, handleFilterChange, handleOrderChange } = props;
 
+    // Extract custom attributes from context
     const { SearchWrapper = StyledSearchWrapper, HeaderCellWrapper = StyledHeaderCellWrapper } = useContext(
         ComponentsContext
     );
