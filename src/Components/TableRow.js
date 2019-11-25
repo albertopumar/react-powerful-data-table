@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-import ComponentsContext from './Utils/ComponentsContext';
+import ComponentsContext from '../Utils/ComponentsContext';
 
 const StyledRow = styled.div`
     display: flex;
