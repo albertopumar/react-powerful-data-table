@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import TableHeader from './Components/TableHeader';
-import ComponentsContext from './Utils/ComponentsContext';
-import TableContent from './Components/TableContent';
-import Pagination from './Components/Pagination';
+import TableHeader from './TableHeader';
+import ComponentsContext from '../Utils/ComponentsContext';
+import TableContent from './TableContent';
+import Pagination from './Pagination';
 
 const TableWrapper = styled.div`
     width: 80%;

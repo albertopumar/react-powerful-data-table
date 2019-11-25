@@ -1,4 +1,4 @@
-import PowerfulDataTable from './PowerfulDataTable';
+import PowerfulDataTable from './Components/PowerfulDataTable';
 
 export * from './Components';
 
