@@ -31,9 +31,20 @@ class SelfManagedData extends React.Component {
         this.setState({ tableData, pagedData });
     }
 
+    createQuery = inputQuery => {
+        const { pagination, filter, order } = this.state;
+        const query = {
+            page: pagination.currentPage,
+            filter,
+            order
+        };
+        return { ...query, ...inputQuery };
+    };
+
     //TODO: use custom pagination
     handlePageChange(page) {
-        this.props.onPageChanged && this.props.onPageChanged({ page });
+        const query = this.createQuery({ page });
+        this.props.onPageChanged && this.props.onPageChanged(query);
 
         const { pageSize } = this.state.pagination;
         const pagedData = this.state.tableData.slice(page * pageSize, (page + 1) * pageSize);
@@ -42,10 +53,12 @@ class SelfManagedData extends React.Component {
     }
 
     //TODO: use custom filter
-    //TODO: onFilter hook
     handleFilterChange(newFilter) {
         const filter = { ...this.state.filter, [newFilter.field]: newFilter.data };
         const tableData = defaultFilterFunction(filter, this.props.tableData);
+
+        const query = this.createQuery({ filter });
+        this.props.onFilterChanged && this.props.onFilterChanged(query);
 
         this.setState(
             { filter, tableData, pagination: { ...this.state.pagination, totalCount: tableData.length } },
@@ -54,12 +67,13 @@ class SelfManagedData extends React.Component {
     }
 
     //TODO: use custom order
-    //TODO: onOrderHook
-    //TODO: prevent page change
-    handleOrderChange(newOrder) {
-        const tableData = defaultOrderFunction(newOrder, this.state.tableData);
+    handleOrderChange(order) {
+        const tableData = defaultOrderFunction(order, this.state.tableData);
 
-        this.setState({ tableData, order: newOrder }, () => this.handlePageChange(0));
+        const query = this.createQuery({ order });
+        this.props.onOrderChanged && this.props.onOrderChanged(query);
+
+        this.setState({ tableData, order }, () => this.handlePageChange(this.state.pagination.currentPage));
     }
 
     render() {
