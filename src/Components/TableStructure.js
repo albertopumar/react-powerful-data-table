@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import TableHeader from './TableHeader';
 import ComponentsContext from '../Utils/ComponentsContext';
 import TableContent from './TableContent';
-import Pagination from './Pagination';
+import DefaultPagination from './Pagination';
 
 // TODO: extract to component
 const TableWrapper = styled.div`
@@ -24,6 +24,9 @@ export default props => {
         pagination,
         order
     } = props;
+
+    const context = useContext(ComponentsContext);
+    const Pagination = context && context.Pagination ? context.Pagination : DefaultPagination;
 
     return (
         <TableWrapper>
