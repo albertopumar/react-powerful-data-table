@@ -1,7 +1,7 @@
 import React from 'react';
 import TableStructure from '../Components/TableStructure';
 
-import { defaultFilterFunction, defaultOrderFunction } from '../Utils/defaultFunctions';
+import { defaultFilterFunction, defaultOrderFunction, defaultPaginationFunction } from '../Utils/defaultFunctions';
 
 class SelfManagedData extends React.Component {
     constructor(props) {
@@ -47,7 +47,7 @@ class SelfManagedData extends React.Component {
         this.props.onPageChanged && this.props.onPageChanged(query);
 
         const { pageSize } = this.state.pagination;
-        const pagedData = this.state.tableData.slice(page * pageSize, (page + 1) * pageSize);
+        const pagedData = defaultPaginationFunction(page, pageSize, this.state.tableData);
 
         this.setState({ pagedData, pagination: { ...this.state.pagination, currentPage: page } });
     }
