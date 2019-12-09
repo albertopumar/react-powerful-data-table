@@ -41,21 +41,27 @@ class SelfManagedData extends React.Component {
         return { ...query, ...inputQuery };
     };
 
-    //TODO: use custom pagination
     handlePageChange(page) {
         const query = this.createQuery({ page });
         this.props.onPageChanged && this.props.onPageChanged(query);
 
         const { pageSize } = this.state.pagination;
-        const pagedData = defaultPaginationFunction(page, pageSize, this.state.tableData);
+        const paginationFunction =
+            this.props.customFunctions && this.props.customFunctions.paginationFunction
+                ? this.props.customFunctions.paginationFunction
+                : defaultPaginationFunction;
+        const pagedData = paginationFunction(page, pageSize, this.state.tableData);
 
         this.setState({ pagedData, pagination: { ...this.state.pagination, currentPage: page } });
     }
 
-    //TODO: use custom filter
     handleFilterChange(newFilter) {
         const filter = { ...this.state.filter, [newFilter.field]: newFilter.data };
-        const tableData = defaultFilterFunction(filter, this.props.tableData);
+        const filterFunction =
+            this.props.customFunctions && this.props.customFunctions.filterFunction
+                ? this.props.customFunctions.filterFunction
+                : defaultFilterFunction;
+        const tableData = filterFunction(filter, this.props.tableData);
 
         const query = this.createQuery({ filter });
         this.props.onFilterChanged && this.props.onFilterChanged(query);
@@ -66,9 +72,12 @@ class SelfManagedData extends React.Component {
         );
     }
 
-    //TODO: use custom order
     handleOrderChange(order) {
-        const tableData = defaultOrderFunction(order, this.state.tableData);
+        const orderFunction =
+            this.props.customFunctions && this.props.customFunctions.orderFunction
+                ? this.props.customFunctions.orderFunction
+                : defaultOrderFunction;
+        const tableData = orderFunction(order, this.state.tableData);
 
         const query = this.createQuery({ order });
         this.props.onOrderChanged && this.props.onOrderChanged(query);
