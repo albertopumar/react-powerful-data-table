@@ -5,8 +5,6 @@ import HeaderCell from './HeaderCell';
 import ComponentsContext from '../../Utils/ComponentsContext';
 
 const TableHeader = props => {
-    //TODO: Handle order state
-
     const { tableStructure, handleFilterChange, handleOrderChange, order } = props;
 
     // Extract custom attributes from context
