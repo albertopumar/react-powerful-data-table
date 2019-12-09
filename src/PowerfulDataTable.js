@@ -1,7 +1,7 @@
 import React from 'react';
 
-import SelfManagedTable from './SelfManagedTable';
-import StoreDrivenTable from './StoreDrivenTable';
+import SelfManagedTable from './Tables/SelfManagedTable';
+import StoreDrivenTable from './Tables/StoreDrivenTable';
 
 export default props => {
     const { selfManagedData, ...otherProps } = props;

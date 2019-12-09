@@ -1,7 +1,7 @@
 import React from 'react';
-import TableStructure from './Components/TableStructure';
+import TableStructure from '../Components/TableStructure';
 
-import { defaultFilterFunction, defaultOrderFunction } from './Utils/defaultFunctions';
+import { defaultFilterFunction, defaultOrderFunction } from '../Utils/defaultFunctions';
 
 class SelfManagedData extends React.Component {
     //TODO: Redux and promise support
