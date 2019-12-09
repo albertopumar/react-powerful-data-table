@@ -11,36 +11,40 @@ class SelfManagedData extends React.Component {
         this.handleOrderChange = this.handleOrderChange.bind(this);
 
         this.state = {
-            pagination: {
-                currentPage: 0,
-                pageSize: 5,
-                totalCount: props.tableData.length
-            },
+            page: 0,
             filter: [],
             order: { field: '', order: '' }
         };
     }
 
-    componentDidMount() {
-        const { currentPage, pageSize } = this.state.pagination;
-        const { tableData } = this.props;
-        const pagedData = tableData.slice(currentPage * pageSize, (currentPage + 1) * pageSize);
-        this.setState({ tableData, pagedData });
-    }
+    componentDidMount() {}
 
     // TODO: Return query not page
     handlePageChange(page) {
-        this.props.onPageChanged && this.props.onPageChanged({ page });
+        const query = { ...this.state, page };
+
+        this.props.onPageChanged && this.props.onPageChanged(query);
+
+        this.setState({ page });
     }
 
     // TODO: Return query not filter
-    handleFilterChange(newFilter) {}
+    handleFilterChange(newFilter) {
+        const filter = { ...this.state.filter, [newFilter.field]: newFilter.data };
+        const query = { ...this.state, filter };
+
+        this.props.onFilterChanged && this.props.onFilterChanged(query);
+
+        this.setState({ filter });
+    }
 
     // TODO: Return query not order
-    handleOrderChange(newOrder) {
-        this.props.onOrderChanged && this.props.onOrderChanged(newOrder);
+    handleOrderChange(order) {
+        const query = { ...this.state, order };
+        // if (this.props.onOrderChanged) console.log(query);
+        this.props.onOrderChanged && this.props.onOrderChanged(query);
 
-        this.setState({ order: newOrder });
+        this.setState({ order });
     }
 
     render() {
@@ -48,8 +52,6 @@ class SelfManagedData extends React.Component {
 
         const defaultPagination = { currentPage: 0, pageSize: 5, totalCount: 0 };
         const { components, tableStructure, tableData, pagination } = this.props;
-
-        console.log(pagination);
 
         return (
             <TableStructure
