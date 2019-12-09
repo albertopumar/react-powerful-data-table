@@ -4,7 +4,6 @@ import TableStructure from '../Components/TableStructure';
 import { defaultFilterFunction, defaultOrderFunction } from '../Utils/defaultFunctions';
 
 class SelfManagedData extends React.Component {
-    //TODO: Redux and promise support
     constructor(props) {
         super(props);
 
@@ -12,7 +11,6 @@ class SelfManagedData extends React.Component {
         this.handleFilterChange = this.handleFilterChange.bind(this);
         this.handleOrderChange = this.handleOrderChange.bind(this);
 
-        const { tableStructure } = props;
         this.state = {
             pagination: {
                 currentPage: 0,
@@ -22,8 +20,7 @@ class SelfManagedData extends React.Component {
             filter: [],
             order: { field: '', order: '' },
             tableData: [],
-            pagedData: [],
-            tableStructure
+            pagedData: []
         };
     }
 
@@ -34,7 +31,6 @@ class SelfManagedData extends React.Component {
         this.setState({ tableData, pagedData });
     }
 
-    //TODO: use function and bind it
     handlePageChange(page) {
         this.props.onPageChanged && this.props.onPageChanged({ page });
 
@@ -44,10 +40,8 @@ class SelfManagedData extends React.Component {
         this.setState({ pagedData, pagination: { ...this.state.pagination, currentPage: page } });
     }
 
-    //TODO: use function and bind it
     handleFilterChange(newFilter) {
         const filter = { ...this.state.filter, [newFilter.field]: newFilter.data };
-        // TODO: moved
         const tableData = defaultFilterFunction(filter, this.props.tableData);
 
         this.setState(
@@ -59,7 +53,6 @@ class SelfManagedData extends React.Component {
     //TODO: use custom order
     //TODO: prevent page change
     handleOrderChange(newOrder) {
-        // TODO: moved
         const tableData = defaultOrderFunction(newOrder, this.state.tableData);
 
         this.setState({ tableData, order: newOrder }, () => this.handlePageChange(0));
