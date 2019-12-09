@@ -13,9 +13,7 @@ const TableContent = props => {
     // TODO: find representative key
     return (
         <ContentWrapper>
-            {tableData.map(rowData => (
-                <TableRow tableStructure={tableStructure} rowData={rowData} />
-            ))}
+            {tableData && tableData.map(rowData => <TableRow tableStructure={tableStructure} rowData={rowData} />)}
         </ContentWrapper>
     );
 };
