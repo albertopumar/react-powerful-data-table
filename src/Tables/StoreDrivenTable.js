@@ -2,7 +2,6 @@ import React from 'react';
 import TableStructure from '../Components/TableStructure';
 
 class SelfManagedData extends React.Component {
-    //TODO: Redux and promise support
     constructor(props) {
         super(props);
 
@@ -17,9 +16,6 @@ class SelfManagedData extends React.Component {
         };
     }
 
-    componentDidMount() {}
-
-    // TODO: Return query not page
     handlePageChange(page) {
         const query = { ...this.state, page };
 
@@ -28,7 +24,6 @@ class SelfManagedData extends React.Component {
         this.setState({ page });
     }
 
-    // TODO: Return query not filter
     handleFilterChange(newFilter) {
         const filter = { ...this.state.filter, [newFilter.field]: newFilter.data };
         const query = { ...this.state, filter };
@@ -38,10 +33,8 @@ class SelfManagedData extends React.Component {
         this.setState({ filter });
     }
 
-    // TODO: Return query not order
     handleOrderChange(order) {
         const query = { ...this.state, order };
-        // if (this.props.onOrderChanged) console.log(query);
         this.props.onOrderChanged && this.props.onOrderChanged(query);
 
         this.setState({ order });

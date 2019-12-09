@@ -31,6 +31,7 @@ class SelfManagedData extends React.Component {
         this.setState({ tableData, pagedData });
     }
 
+    //TODO: use custom pagination
     handlePageChange(page) {
         this.props.onPageChanged && this.props.onPageChanged({ page });
 
@@ -40,6 +41,8 @@ class SelfManagedData extends React.Component {
         this.setState({ pagedData, pagination: { ...this.state.pagination, currentPage: page } });
     }
 
+    //TODO: use custom filter
+    //TODO: onFilter hook
     handleFilterChange(newFilter) {
         const filter = { ...this.state.filter, [newFilter.field]: newFilter.data };
         const tableData = defaultFilterFunction(filter, this.props.tableData);
@@ -51,6 +54,7 @@ class SelfManagedData extends React.Component {
     }
 
     //TODO: use custom order
+    //TODO: onOrderHook
     //TODO: prevent page change
     handleOrderChange(newOrder) {
         const tableData = defaultOrderFunction(newOrder, this.state.tableData);
