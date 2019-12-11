@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import FilterInput from './Filter';
 import ComponentsContext from '../../Utils/ComponentsContext';
+import DefaultOrder from './Order';
 
 const StyledSearchWrapper = styled.div`
     position: relative;
@@ -17,25 +18,18 @@ const HeaderCell = props => {
     const { columnStructure, handleFilterChange, handleOrderChange, order } = props;
 
     // Extract custom attributes from context
-    const { SearchWrapper = StyledSearchWrapper, HeaderCellWrapper = StyledHeaderCellWrapper } = useContext(
-        ComponentsContext
-    );
+    const {
+        SearchWrapper = StyledSearchWrapper,
+        HeaderCellWrapper = StyledHeaderCellWrapper,
+        Order = DefaultOrder,
+        Filter = FilterInput
+    } = useContext(ComponentsContext);
 
-    //TODO: extract order component
     return (
         <HeaderCellWrapper className="header-cell">
-            <span
-                onClick={() =>
-                    handleOrderChange({
-                        direction: order.direction === 'asc' ? 'desc' : 'asc',
-                        field: columnStructure.field
-                    })
-                }
-            >
-                {columnStructure.title} {order && (order.direction === 'asc' ? '<' : '>')}
-            </span>
+            <Order handleOrderChange={handleOrderChange} order={order} columnStructure={columnStructure} />
             <SearchWrapper>
-                <FilterInput columnStructure={columnStructure} handleFilterChange={handleFilterChange} />
+                <Filter columnStructure={columnStructure} handleFilterChange={handleFilterChange} />
             </SearchWrapper>
         </HeaderCellWrapper>
     );
