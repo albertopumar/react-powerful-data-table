@@ -1,9 +1,11 @@
 import React from 'react';
+import Dropdown from '../Icons/Dropdown';
+import Dropup from '../Icons/Dropup';
 
 const Order = props => {
     const { columnStructure, order, handleOrderChange } = props;
     return (
-        <span
+        <div
             onClick={() =>
                 handleOrderChange({
                     direction: order.direction === 'asc' ? 'desc' : 'asc',
@@ -11,8 +13,9 @@ const Order = props => {
                 })
             }
         >
-            {columnStructure.title} {order && (order.direction === 'asc' ? '<' : '>')}
-        </span>
+            <span> {columnStructure.title} </span>
+            {order && (order.direction === 'asc' ? <Dropdown /> : <Dropup />)}
+        </div>
     );
 };
 
