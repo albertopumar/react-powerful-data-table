@@ -14,6 +14,7 @@ const SearchInput = styled.input`
 
 const ClearIcon = styled.span`
     position: absolute;
+    cursor: pointer;
     right: 55px;
 `;
 
