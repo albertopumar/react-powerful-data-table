@@ -1,18 +1,25 @@
-export const defaultOrderFunction = (filterObject, data) => {
+export const defaultOrderFunction = (filterObject, data, orderLogic) => {
+    const defaultOrderLogic = (a, b) =>
+        a[filterObject.field].toString().localeCompare(b[filterObject.field].toString());
+
     return filterObject.direction === 'asc'
-        ? data.sort((a, b) => a[filterObject.field].toString().localeCompare(b[filterObject.field].toString()))
-        : data.reverse((a, b) => a[filterObject.field].toString().localeCompare(b[filterObject.field].toString()));
+        ? data.sort(orderLogic || defaultOrderLogic)
+        : data.reverse(orderLogic || defaultOrderLogic);
 };
 
-export const defaultFilterFunction = (filterObject, data) => {
+export const defaultFilterFunction = (filterObject, data, filterLogic) => {
+    const defaultFilterLogic = (field, filterInput) =>
+        field
+            .toString()
+            .toLowerCase()
+            .includes(filterInput.toLowerCase());
+
     return data.filter(
         rowInfo =>
-            !Object.entries(filterObject).find(
-                ([field, data]) =>
-                    !rowInfo[field]
-                        .toString()
-                        .toLowerCase()
-                        .includes(data.toLowerCase())
+            !Object.entries(filterObject).find(([field, filterInput]) =>
+                filterLogic
+                    ? !filterLogic(rowInfo[field], filterInput)
+                    : !defaultFilterLogic(rowInfo[field], filterInput)
             )
     );
 };

@@ -7,10 +7,13 @@ const Order = props => {
     return (
         <div
             onClick={() =>
-                handleOrderChange({
-                    direction: order.direction === 'asc' ? 'desc' : 'asc',
-                    field: columnStructure.field
-                })
+                handleOrderChange(
+                    {
+                        direction: order.direction === 'asc' ? 'desc' : 'asc',
+                        field: columnStructure.field
+                    },
+                    columnStructure.customSort
+                )
             }
         >
             <span> {columnStructure.title} </span>

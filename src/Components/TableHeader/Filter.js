@@ -23,7 +23,7 @@ const FilterInput = props => {
 
     const _handleFilterChange = data => {
         const { columnStructure, handleFilterChange } = props;
-        handleFilterChange({ data, field: columnStructure.field });
+        handleFilterChange({ data, field: columnStructure.field }, columnStructure.customFilter);
     };
     const debounceFilter = _.debounce(_handleFilterChange, DEBOUNCE_TIME);
 

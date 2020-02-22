@@ -55,13 +55,13 @@ class SelfManagedData extends React.Component {
         this.setState({ pagedData, pagination: { ...this.state.pagination, currentPage: page } });
     }
 
-    handleFilterChange(newFilter) {
+    handleFilterChange(newFilter, columnFilter) {
         const filter = { ...this.state.filter, [newFilter.field]: newFilter.data };
         const filterFunction =
             this.props.customFunctions && this.props.customFunctions.filterFunction
                 ? this.props.customFunctions.filterFunction
                 : defaultFilterFunction;
-        const tableData = filterFunction(filter, this.props.tableData);
+        const tableData = filterFunction(filter, this.props.tableData, columnFilter);
 
         const query = this.createQuery({ filter });
         this.props.onFilterChanged && this.props.onFilterChanged(query);
@@ -72,12 +72,12 @@ class SelfManagedData extends React.Component {
         );
     }
 
-    handleOrderChange(order) {
+    handleOrderChange(order, columnOrder) {
         const orderFunction =
             this.props.customFunctions && this.props.customFunctions.orderFunction
                 ? this.props.customFunctions.orderFunction
                 : defaultOrderFunction;
-        const tableData = orderFunction(order, this.state.tableData);
+        const tableData = orderFunction(order, this.state.tableData, columnOrder);
 
         const query = this.createQuery({ order });
         this.props.onOrderChanged && this.props.onOrderChanged(query);
