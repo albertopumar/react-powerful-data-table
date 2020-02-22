@@ -3,8 +3,8 @@ export const defaultOrderFunction = (filterObject, data, orderLogic) => {
         a[filterObject.field].toString().localeCompare(b[filterObject.field].toString());
 
     return filterObject.direction === 'asc'
-        ? data.sort(orderLogic || defaultOrderLogic)
-        : data.reverse(orderLogic || defaultOrderLogic);
+        ? data.sort((a, b) => orderLogic(a[filterObject.field], b[filterObject.field]) || defaultOrderLogic)
+        : data.reverse((a, b) => orderLogic(a[filterObject.field], b[filterObject.field]) || defaultOrderLogic);
 };
 
 export const defaultFilterFunction = (filterObject, data, filterLogic) => {
