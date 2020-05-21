@@ -28,7 +28,6 @@ class HostManagedTable extends React.Component {
         
         const query = this.createQuery();
         tableData(query).then(res => {
-            console.log(res);
             const {data, ...pagination} = res;
             this.setState({ tableData: data, pagedData: data, pagination });
         });
@@ -60,7 +59,7 @@ class HostManagedTable extends React.Component {
         this.props.tableData(query).then(res => {
             console.log(res);
             const {data, ...pagination} = res;
-            this.setState({ tableData: data, pagedData: data, pagination });
+            this.setState({ tableData: data, pagedData: data, pagination, filter });
         });
     }
 
