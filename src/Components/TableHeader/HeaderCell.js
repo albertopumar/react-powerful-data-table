@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import FilterInput from './Filter';
 import ComponentsContext from '../../Utils/ComponentsContext';
-import DefaultOrder from './Order';
+import DefaultTableOrder from './Order';
 
 const StyledSearchWrapper = styled.div`
     position: relative;
@@ -18,13 +18,19 @@ const HeaderCell = props => {
     const { columnStructure, handleFilterChange, handleOrderChange, order } = props;
 
     // Extract custom attributes from context
+    debugger;
     const {
         SearchWrapper = StyledSearchWrapper,
         HeaderCellWrapper = StyledHeaderCellWrapper,
-        Order = DefaultOrder,
-        Filter = FilterInput
+        DefaultOrder = DefaultTableOrder,
+        DefaultFilter = FilterInput
     } = useContext(ComponentsContext);
 
+    debugger;
+    const Order = columnStructure.customOrderComponent || DefaultOrder;
+    const Filter = columnStructure.customFilterComponent || DefaultFilter;
+
+    debugger;
     return (
         <HeaderCellWrapper className="header-cell">
             <Order handleOrderChange={handleOrderChange} order={order} columnStructure={columnStructure} />
