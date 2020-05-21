@@ -10,7 +10,7 @@ Data table component for [ReactJS](https://es.reactjs.org/) developed to create 
 
 -   [Installation](#Installation)
 -   [Usage](#Usage)
--   [Documentation](#)
+-   [Documentation](#Documentation)
 -   [License](#License)
 
 # Installation
@@ -47,6 +47,12 @@ class App extends React.Component {
     }
 }
 ```
+
+# Documentation
+
+Documentation a more examples can be found in the storybook page:
+
+[![Storybook](https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg)](https://albertopumar.github.io/react-powerful-data-table)
 
 # License
 

@@ -8,7 +8,9 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "publish:npm": "rm -rf dist && mkdir dist &&  babel ./src -d dist --copy-files",
-        "storybook": "start-storybook"
+        "storybook": "start-storybook",
+        "storybook:build": "build-storybook -c .storybook -o .out",
+        "storybook:deploy": "storybook-to-ghpages"
     },
     "dependencies": {
         "lodash": "^4.17.15",
