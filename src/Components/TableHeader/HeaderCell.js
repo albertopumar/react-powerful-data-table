@@ -18,7 +18,6 @@ const HeaderCell = props => {
     const { columnStructure, handleFilterChange, handleOrderChange, order } = props;
 
     // Extract custom attributes from context
-    debugger;
     const {
         SearchWrapper = StyledSearchWrapper,
         HeaderCellWrapper = StyledHeaderCellWrapper,
@@ -26,11 +25,9 @@ const HeaderCell = props => {
         DefaultFilter = FilterInput
     } = useContext(ComponentsContext);
 
-    debugger;
     const Order = columnStructure.customOrderComponent || DefaultOrder;
     const Filter = columnStructure.customFilterComponent || DefaultFilter;
 
-    debugger;
     return (
         <HeaderCellWrapper className="header-cell">
             <Order handleOrderChange={handleOrderChange} order={order} columnStructure={columnStructure} />
