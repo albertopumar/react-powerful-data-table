@@ -30,7 +30,7 @@ export default props => {
 
     return (
         <TableWrapper>
-            <ComponentsContext.Provider value={components}>
+            <ComponentsContext.Provider value={components || {}}>
                 <TableHeader
                     tableStructure={tableStructure}
                     handleFilterChange={handleFilterChange}
