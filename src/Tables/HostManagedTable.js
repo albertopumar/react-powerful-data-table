@@ -14,7 +14,7 @@ class HostManagedTable extends React.Component {
         this.state = {
             pagination: {
                 currentPage: 0,
-                pageSize: 5,
+                pageSize: props.defaultPageSize || 5,
                 totalCount: 0
             },
             filter: [],
