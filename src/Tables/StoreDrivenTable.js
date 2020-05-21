@@ -1,7 +1,7 @@
 import React from 'react';
 import TableStructure from '../Components/TableStructure';
 
-class SelfManagedData extends React.Component {
+class StoreDrivenData extends React.Component {
     constructor(props) {
         super(props);
 
@@ -61,4 +61,4 @@ class SelfManagedData extends React.Component {
     }
 }
 
-export default SelfManagedData;
+export default StoreDrivenData;
