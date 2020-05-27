@@ -24,8 +24,8 @@
         "@babel/plugin-proposal-class-properties": "^7.7.4",
         "@babel/preset-react": "^7.7.4",
         "@storybook/addon-info": "^5.3.18",
-        "@storybook/addon-storysource": "^5.3.18",
         "@storybook/react": "^5.3.18",
+        "@storybook/storybook-deployer": "^2.8.6",
         "babel-loader": "^8.1.0",
         "react-redux": "^7.2.0",
         "redux": "^4.0.5"
