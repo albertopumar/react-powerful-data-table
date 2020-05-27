@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTable from '../../src/PowerfulDataTable';
-import demoData from '../demo-data';
+import demoData from '../mocks/demo-data';
 
 let OrderComponentProps = {};
 
@@ -20,8 +20,6 @@ const tableStructure = [
 ];
 
 const OrderComponent = props => {
-    console.log(Object.keys(props));
-
     return <div>Order Component</div>;
 }
     
