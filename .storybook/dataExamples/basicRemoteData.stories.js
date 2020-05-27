@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTable from '../../src/PowerfulDataTable';
-import demoData from '../demo-data';
+import fetchData from '../mocks/fetchData';
 
 import text from './basicRemoteData.md';
 
@@ -10,21 +10,9 @@ const tableStructure = [
     { title: 'Apellido', field: 'surname' }
 ];
 
-const fetchTableData = query => {
-    console.log(query);
-    
-    return new Promise(resolve => 
-        resolve({
-            data: demoData.slice(0, 5),
-            pageSize: 5,
-            totalCount: 20,
-            currentPage: 0
-        }))
-};
-
 export const basicRemoteData = () => 
     <ReactTable
-        tableData={fetchTableData}
+        tableData={fetchData}
         tableStructure={tableStructure} 
     />;
 

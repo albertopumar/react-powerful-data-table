@@ -3,24 +3,9 @@ Show local stored data in the table. Although we have stored all the data we onl
 
 ## Configuration
  - We need to pass the structure of the table as `tableStructure` parameter. An example of this parameter can be found in the example below.
- - We need to pass a function wrapping the backend request
-    - It expect result to be:
-```json
-    {
-        data: [],
-        pageSize: 5,
-        totalCount: 20,
-        currentPage: 0
-    }
-```
-    - The `query` object has this structure:
-```json
-    {
-        filter: {columnIdentifier: "value", otherColumn: "value"},
-        order: { field: "value", order: "value" },
-        page: 0
-    }
-```
+ - We need to pass the `data` `Array` and `pagination` `Object` managed by `Redux`
+ - We need to pass an `onQueryChanged` `function` which will be called when the `query` `Object` change and `data` needs to update.
+
 
 ## Example
 ```jsx
@@ -33,13 +18,28 @@ const tableStructure = [
     { title: 'Surname', field: 'surname' }
 ];
 
-const fetchTableData = query => {
-    return fetch('some/backend/url');
-};
+class ReactTableComponent extends React.Component {
+    componentDidMount() {
+        fetchData().then(data => this.props.setData(data));
+    }
 
-<ReactTable
-    selfManagedData
-    tableStructure={tableStructure} 
-    tableData={fetchTableData}
-/>
+    onQueryChanged = query => {
+        this.props.setQuery(query);
+        fetchData(query).then(data => this.props.setData(data));
+    };
+
+    render() {
+        const { data, ...pagination } = this.props.data;
+        return ( 
+            <ReactTable
+                tableStructure={tableStructure} 
+                tableData={data}
+                pagination={pagination}
+                onQueryChanged={this.onQueryChanged}
+            />
+        );
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReactTableComponent);
 ```

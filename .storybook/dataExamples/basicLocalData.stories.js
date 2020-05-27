@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactTable from '../../src/PowerfulDataTable';
-import demoData from '../demo-data';
+import demoData from '../mocks/demo-data';
 
 import text from './basicLocalData.md';
 

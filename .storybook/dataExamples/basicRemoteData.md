@@ -3,8 +3,8 @@ Show local stored data in the table. Although we have stored all the data we onl
 
 ## Configuration
  - We need to pass the structure of the table as `tableStructure` parameter. An example of this parameter can be found in the example below.
- - We need to pass a function wrapping the backend request
-    - It expect result to be:
+ - We need to pass a function wrapping the backend request as `tableData`
+    - This function must return an object with this structure:
 ```json
     {
         data: [],
@@ -13,7 +13,7 @@ Show local stored data in the table. Although we have stored all the data we onl
         currentPage: 0
     }
 ```
-    - The `query` object has this structure:
+    - This function has as an argument the `query` object with this structure:
 ```json
     {
         filter: {columnIdentifier: "value", otherColumn: "value"},
@@ -33,13 +33,8 @@ const tableStructure = [
     { title: 'Surname', field: 'surname' }
 ];
 
-const fetchTableData = query => {
-    return fetch('some/backend/url');
-};
-
 <ReactTable
-    selfManagedData
-    tableStructure={tableStructure} 
-    tableData={fetchTableData}
-/>
+        tableData={query => fetchDataFunction(query)}
+        tableStructure={tableStructure} 
+    />;
 ```
