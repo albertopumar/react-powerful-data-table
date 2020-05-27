@@ -11,31 +11,30 @@ class StoreDrivenData extends React.Component {
 
         this.state = {
             page: 0,
-            filter: [],
+            filter: {},
             order: { field: '', order: '' }
         };
     }
 
     handlePageChange(page) {
-        const query = { ...this.state, page };
-
-        this.props.onPageChanged && this.props.onPageChanged(query);
+        this.props.onPageChanged && this.props.onPageChanged(page);
+        this.props.onQueryChanged && this.props.onQueryChanged({...this.state, page});
 
         this.setState({ page });
     }
 
     handleFilterChange(newFilter) {
         const filter = { ...this.state.filter, [newFilter.field]: newFilter.data };
-        const query = { ...this.state, filter };
 
-        this.props.onFilterChanged && this.props.onFilterChanged(query);
+        this.props.onFilterChanged && this.props.onFilterChanged(filter);
+        this.props.onQueryChanged && this.props.onQueryChanged({...this.state, filter, page: 0});
 
         this.setState({ filter });
     }
 
     handleOrderChange(order) {
-        const query = { ...this.state, order };
-        this.props.onOrderChanged && this.props.onOrderChanged(query);
+        this.props.onOrderChanged && this.props.onOrderChanged(order);
+        this.props.onQueryChanged && this.props.onQueryChanged({...this.state, order});
 
         this.setState({ order });
     }

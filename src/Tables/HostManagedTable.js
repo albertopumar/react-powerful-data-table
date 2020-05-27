@@ -14,7 +14,7 @@ class HostManagedTable extends React.Component {
         this.state = {
             pagination: {
                 currentPage: 0,
-                pageSize: 5,
+                pageSize: props.defaultPageSize || 5,
                 totalCount: 0
             },
             filter: [],
@@ -28,7 +28,6 @@ class HostManagedTable extends React.Component {
         
         const query = this.createQuery();
         tableData(query).then(res => {
-            console.log(res);
             const {data, ...pagination} = res;
             this.setState({ tableData: data, pagedData: data, pagination });
         });
@@ -47,29 +46,26 @@ class HostManagedTable extends React.Component {
     handlePageChange(page) {
         const query = this.createQuery({ page });
         this.props.tableData(query).then(res => {
-            console.log(res);
             const {data, ...pagination} = res;
             this.setState({ tableData: data, pagedData: data, pagination });
         });
     }
 
-    handleFilterChange(newFilter, columnFilter) {
+    handleFilterChange(newFilter) {
         const filter = { ...this.state.filter, [newFilter.field]: newFilter.data };
         const query = this.createQuery({ filter });
 
         this.props.tableData(query).then(res => {
-            console.log(res);
             const {data, ...pagination} = res;
-            this.setState({ tableData: data, pagedData: data, pagination });
+            this.setState({ tableData: data, pagedData: data, pagination, filter });
         });
     }
 
-    handleOrderChange(order, columnOrder) {
-        const query = this.createQuery({ order });
+    handleOrderChange(order) {
+        const query = this.createQuery({ order });        
         this.props.tableData(query).then(res => {
-            console.log(res);
             const {data, ...pagination} = res;
-            this.setState({ tableData: data, pagedData: data, pagination });
+            this.setState({ tableData: data, pagedData: data, pagination, order });
         });
     }
 
