@@ -10,6 +10,7 @@ Show local stored data in the table. Although we have stored all the data we onl
 ## Example
 ```jsx
 import React from 'react';
+import { connect, batch } from 'react-redux';
 import ReactTable from '../../src/PowerfulDataTable';
 
 const tableStructure = [
@@ -24,8 +25,12 @@ class ReactTableComponent extends React.Component {
     }
 
     onQueryChanged = query => {
-        this.props.setQuery(query);
-        fetchData(query).then(data => this.props.setData(data));
+        fetchData(query).then(data => {
+            batch(() => {
+                this.props.setData(data);
+                this.props.setQuery(query);
+            });
+        });
     };
 
     render() {

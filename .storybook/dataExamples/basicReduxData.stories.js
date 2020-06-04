@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStore, combineReducers } from 'redux';
-import { Provider, connect } from 'react-redux';
+import { Provider, connect, batch } from 'react-redux';
 
 import ReactTable from '../../src/PowerfulDataTable';
 import fetchData from '../mocks/fetchData';
@@ -83,8 +83,12 @@ class ReactTableComponent extends React.Component {
     }
 
     onQueryChanged = query => {
-        this.props.setQuery(query);
-        fetchData(query).then(data => this.props.setData(data));
+        fetchData(query).then(data => {
+            batch(() => {
+                this.props.setData(data);
+                this.props.setQuery(query);
+            });
+        });
     };
 
     render() {
