@@ -1,7 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
 import ReactTable from '../../src/PowerfulDataTable';
 import demoData from '../mocks/demo-data';
-import styled from 'styled-components';
+import text from './customCellHeaderWrapper.md';
 
 const tableStructure = [
     {
@@ -37,4 +38,11 @@ export const customHeaderCellWrapper = () =>
         tableStructure={tableStructure} 
     />;
 
-export default { title: 'Component Overrides Examples' };
+export default { 
+    title: 'Component Overrides Examples',
+    parameters: {
+        info: {
+            text
+        }
+    }
+ };
