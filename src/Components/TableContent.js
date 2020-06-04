@@ -10,10 +10,16 @@ const ContentWrapper = styled.div`
 const TableContent = props => {
     const { tableStructure, tableData } = props;
 
-    // TODO: find representative key
     return (
         <ContentWrapper>
-            {tableData && tableData.map(rowData => <TableRow tableStructure={tableStructure} rowData={rowData} />)}
+            {tableData && tableData.map((rowData, index) => 
+                <TableRow 
+                    key={`row-${index}`}
+                    columnId={`row-${index}`}
+                    tableStructure={tableStructure}
+                    rowData={rowData} 
+                />
+            )}
         </ContentWrapper>
     );
 };
