@@ -24,4 +24,4 @@ export const customColumn = () =>
         tableStructure={customColumnTableStructure} 
     />;
 
-export default { title: 'Component Overrides Examples' };
+export default { title: 'Column Component Overrides Examples' };

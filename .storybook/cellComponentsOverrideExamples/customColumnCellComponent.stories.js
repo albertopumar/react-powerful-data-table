@@ -1,23 +1,28 @@
 import React from 'react';
 import ReactTable from '../../src/PowerfulDataTable';
-import text from './customCellHeaderWrapper.md';
+import text from './customColumnCellComponent.md';
 
-const CustomCellComponent = props => {
+const CustomStatusCellComponent = props => {
+    const { data } = props;
+    return (
+        <input type="checkbox" checked={data} />
+    );
+};
+
+const CustomNameCellComponent = props => {
     const { data: { firstName, surname } } = props;
     return (
-        <div className="cell">
+        <>
             <h1 className="firstName">{firstName}</h1>
             <h3 className="surname">{surname}</h3>
-        </div>
+        </>
     );
 };
 
 const tableStructure = [
-    {
-        title: 'Identificador',
-        field: 'id',
-    },
-    { title: 'Nombre', field: 'name', customCellComponent: CustomCellComponent },
+    { title: 'Status', field: 'status', customCellComponent: CustomStatusCellComponent },
+    { title: 'Identifier', field: 'id' },
+    { title: 'Name', field: 'name', customCellComponent: CustomNameCellComponent },
 ];
 
 const demoData = [
@@ -37,7 +42,7 @@ export const customColumnCellComponent = () =>
     />;
 
 export default { 
-    title: 'Component Overrides Examples',
+    title: 'Column Component Overrides Examples',
     parameters: {
         info: {
             text
