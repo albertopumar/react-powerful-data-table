@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import StyledHeaderWrapper from './StyledHeaderWrapper';
+import StyledHeaderWrapper from './HeaderWrapper.styled';
 import HeaderCell from './HeaderCell';
 import ComponentsContext from '../../Utils/ComponentsContext';
 
