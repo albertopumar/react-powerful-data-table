@@ -1,22 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import _ from 'lodash';
 
-import { DEBOUNCE_TIME } from '../../constants';
+import ClearIcon from './ClearIcon.styled';
+import SearchInput from './SearchInput.styled';
 
-const SearchInput = styled.input`
-    background: none;
-    border: none;
-    border-bottom: 2px solid #999999;
-    font-size: 16px;
-    color: white;
-`;
+import Close from '../../Icons/Close';
+import { DEBOUNCE_TIME } from '../../../constants';
 
-const ClearIcon = styled.span`
-    position: absolute;
-    cursor: pointer;
-    right: 55px;
-`;
 
 const FilterInput = props => {
     const searchInputRef = React.createRef();
@@ -40,7 +30,7 @@ const FilterInput = props => {
                 onChange={({ target: { value } }) => debounceFilter(value)}
                 ref={searchInputRef}
             />
-            <ClearIcon onClick={handleClearClick}>X</ClearIcon>
+            <ClearIcon onClick={handleClearClick}><Close /></ClearIcon>
         </React.Fragment>
     );
 };
