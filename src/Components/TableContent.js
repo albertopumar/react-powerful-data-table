@@ -5,6 +5,8 @@ import TableRow from './TableRow';
 
 const ContentWrapper = styled.div`
     background-color: #f5f5f5;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 `;
 
 const TableContent = props => {

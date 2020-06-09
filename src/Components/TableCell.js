@@ -1,6 +1,11 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const DefaultCell = ({data}) => <div className="cell">{data}</div>;
+const StyledCell = styled.div`
+    padding: 0 30px;
+`;
+
+const DefaultCell = ({data}) => <StyledCell className="cell">{data}</StyledCell>;
 
 const TableCell = props => {
     const { data, columnStructure: { customCellComponent: CellComponent } } = props;
