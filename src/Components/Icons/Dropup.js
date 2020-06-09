@@ -3,7 +3,7 @@ import { IoMdArrowDropup } from 'react-icons/io';
 import { IconContext } from 'react-icons';
 
 export default () => (
-    <IconContext.Provider value={{ size: '1.5em', className: 'order-icon_desc', style: { verticalAlign: 'middle' } }}>
+    <IconContext.Provider value={{ size: '1.5em', className: 'order-icon_desc', style: { verticalAlign: 'middle', position: 'absolute' } }}>
         <IoMdArrowDropup />
     </IconContext.Provider>
 );
