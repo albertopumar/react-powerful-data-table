@@ -5,20 +5,22 @@ import Dropup from '../Icons/Dropup';
 const Order = props => {
     const { columnStructure, order, handleOrderChange } = props;
     return (
-        <div
-            onClick={() =>
-                handleOrderChange(
-                    {
-                        direction: order.direction === 'asc' ? 'desc' : 'asc',
-                        field: columnStructure.field
-                    },
-                    columnStructure.customSort
-                )
-            }
-        >
-            <span> {columnStructure.title} </span>
+        <>
+            <span
+                onClick={() =>
+                    handleOrderChange(
+                        {
+                            direction: order.direction === 'asc' ? 'desc' : 'asc',
+                            field: columnStructure.field
+                        },
+                        columnStructure.customSort
+                    )
+                }
+            > 
+                {columnStructure.title} 
+            </span>
             {order && (order.direction === 'asc' ? <Dropdown /> : <Dropup />)}
-        </div>
+        </>
     );
 };
 
