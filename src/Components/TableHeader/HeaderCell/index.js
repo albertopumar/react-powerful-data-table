@@ -1,29 +1,12 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
 
-import FilterInput from './Filter';
-import ComponentsContext from '../../Utils/ComponentsContext';
-import DefaultTableOrder from './Order';
+import FilterInput from '../Filter';
+import ComponentsContext from '../../../Utils/ComponentsContext';
+import DefaultTableOrder from '../Order';
 
-const StyledOrderWrapper = styled.div`
-    position: relative;
-    width: 100%;
-    padding: 0 30px 10px;
-    box-sizing: border-box;
-`;
-
-
-const StyledSearchWrapper = styled.div`
-    position: relative;
-    width: 100%;
-    padding: 0 30px;
-    box-sizing: border-box;
-`;
-
-const StyledHeaderCellWrapper = styled.div`
-    flex: 1 1 0px;
-    padding: 10px 0;
-`;
+import StyledHeaderCellWrapper from './HeaderCellWrapper.styled';
+import StyledOrderWrapper from './OrderWrapper.styled';
+import StyledSearchWrapper from './SearchWrapper.styled';
 
 const HeaderCell = props => {
     const { columnStructure, handleFilterChange, handleOrderChange, order } = props;
