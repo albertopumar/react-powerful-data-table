@@ -8,7 +8,7 @@ const StyledCell = styled.div`
 const DefaultCell = ({data}) => <StyledCell className="cell">{data}</StyledCell>;
 
 const TableCell = props => {
-    const { data, columnStructure: { customCellComponent: CellComponent } } = props;
+    const { data, columnStructure: { customCellComponent: CellComponent = DefaultCell } } = props;
 
     return (
         <div className="cell">
