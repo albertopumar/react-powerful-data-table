@@ -1,22 +1,11 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
 
 import TableCell from './TableCell';
-import ComponentsContext from '../Utils/ComponentsContext';
+import ComponentsContext from '../../Utils/ComponentsContext';
 
-const StyledRow = styled.div`
-    display: flex;
-    min-height: 40px;
-    line-height: 40px;
-
-    .cell {
-        flex: 1 1 0px;
-    }
-`;
+import StyledRow from './TableRow.styled';
 
 const TableRow = props => {
-    // TODO: Extract cell to component
-    // TODO: Responsive
     const { tableStructure, rowData, columnId } = props;
     const context = useContext(ComponentsContext);
 
